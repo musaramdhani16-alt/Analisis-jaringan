@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NetStat Indonesia — Analisis Kecepatan Internet 2025</title>
+<style>
+:root{--bg:#0b1020;--panel:#11182b;--panel2:#172039;--text:#eef2ff;--muted:#9aa6c1;--line:#26324f;--accent:#6ea8fe;--accent2:#7ee7c8;--danger:#ff8b94}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:linear-gradient(135deg,#080d19,#10182c 55%,#0b1020);color:var(--text)}
+header{position:sticky;top:0;z-index:20;background:rgba(11,16,32,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{max-width:1250px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:15px 20px}.brand{font-weight:800;letter-spacing:.5px}.brand span{color:var(--accent2)}nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:14px}nav a:hover{color:white}
+.container{max-width:1250px;margin:auto;padding:34px 20px 60px}.hero{padding:42px 0 28px}.eyebrow{color:var(--accent2);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:1.5px}.hero h1{font-size:clamp(32px,5vw,58px);line-height:1.02;margin:12px 0}.hero p{max-width:800px;color:var(--muted);font-size:16px;line-height:1.7}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.btn{border:1px solid var(--line);background:var(--panel);color:white;padding:11px 15px;border-radius:10px;text-decoration:none;cursor:pointer}.btn.primary{background:var(--accent);color:#07101f;border-color:transparent;font-weight:700}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0 28px}.card{background:linear-gradient(180deg,var(--panel),#0f1627);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 12px 35px rgba(0,0,0,.16)}.label{font-size:13px;color:var(--muted)}.value{font-size:28px;font-weight:800;margin-top:7px}.unit{font-size:12px;color:var(--muted)}
+section{margin-top:28px}.section-title{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:14px}.section-title h2{margin:0;font-size:23px}.section-title p{margin:0;color:var(--muted);font-size:13px}
+.panel{background:rgba(17,24,43,.86);border:1px solid var(--line);border-radius:16px;padding:20px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.info{color:#cbd5e1;line-height:1.7;font-size:14px}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#0a1020;border:1px solid var(--line);padding:12px;border-radius:10px;color:#cfe0ff;font-size:13px;overflow:auto}
+.table-wrap{overflow:auto;max-height:560px;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;min-width:700px}th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left;font-size:13px}th{position:sticky;top:0;background:#172039;color:#dce6ff}td.num{text-align:right;font-variant-numeric:tabular-nums}tr:hover td{background:#151f35}
+.bar-row{display:grid;grid-template-columns:180px 1fr 80px;gap:12px;align-items:center;margin:9px 0}.bar-label{font-size:12px;color:#d8e1f5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.bar-track{height:10px;background:#202b46;border-radius:999px;overflow:hidden}.bar-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:999px}.bar-value{text-align:right;font-size:12px;color:var(--muted)}
+.search{width:100%;background:#0b1222;color:white;border:1px solid var(--line);padding:12px 13px;border-radius:10px;outline:none;margin-bottom:12px}.search:focus{border-color:var(--accent)}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat{padding:15px;border:1px solid var(--line);border-radius:12px;background:#0d1425}.stat strong{display:block;font-size:21px;margin-top:4px}.note{font-size:12px;color:var(--muted);line-height:1.6}.source{border-left:4px solid var(--accent2);padding:14px 16px;background:#0d1727;border-radius:10px;color:#cdd7ea;line-height:1.65}.source a{color:#9ec5ff}
+footer{margin-top:45px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}nav{display:none}.bar-row{grid-template-columns:125px 1fr 65px}}
+@media(max-width:520px){.cards,.stats-grid{grid-template-columns:1fr}.container{padding:24px 14px}.hero{padding-top:28px}.hero h1{font-size:36px}.bar-row{grid-template-columns:105px 1fr 60px}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="brand">NET<span>STAT</span> • INDONESIA</div><nav><a href="#ringkasan">Ringkasan</a><a href="#data">Data</a><a href="#analisis">Analisis</a><a href="#sumber">Sumber</a></nav></div></header>
+
+<main class="container">
+<section class="hero">
+
+<h1>Analisis Kecepatan Internet Mobile Indonesia</h1>
+<p>Dashboard statistik berbasis data nyata yang dipublikasikan untuk semester I 2025. Data berisi median kecepatan download internet seluler pada 34 provinsi Indonesia, dengan sumber data Ookla yang dilaporkan oleh Dataloka.</p>
+<div class="actions"><a class="btn primary" href="#data">Lihat Dataset</a><button class="btn" onclick="downloadCSV()">Export CSV</button></div>
+</section>
+
+<section id="ringkasan">
+<div class="cards">
+<div class="card"><div class="label">Jumlah provinsi</div><div class="value" id="n"></div><div class="unit">observasi</div></div>
+<div class="card"><div class="label">Mean</div><div class="value" id="mean"></div><div class="unit">Mbps</div></div>
+<div class="card"><div class="label">Median</div><div class="value" id="median"></div><div class="unit">Mbps</div></div>
+<div class="card"><div class="label">Rentang</div><div class="value" id="range"></div><div class="unit">Mbps</div></div>
+</div>
+</section>
+
+<section>
+<div class="section-title"><div><h2>Gambaran Data</h2><p>Median download per provinsi, semester I 2025</p></div></div>
+<div class="grid2">
+<div class="panel"><div class="info">Data ini bukan data buatan mahasiswa. Setiap angka berasal dari dataset yang dilaporkan sebagai data Ookla. Untuk tugas, variabel statistik yang dianalisis adalah <b>median kecepatan download (Mbps)</b>.</div><br><div class="formula">Variabel = median download internet seluler<br>Satuan = Mbps<br>Periode = Semester I 2025<br>Jumlah observasi = 34 provinsi</div></div>
+<div class="panel"><div class="section-title"><h2 style="font-size:17px">5 tertinggi</h2></div><div id="top5"></div></div>
+</div>
+</section>
+
+<section id="data">
+<div class="section-title"><div><h2>Dataset Lengkap</h2><p>34 provinsi • urutan alfabetis</p></div></div>
+<div class="panel"><input id="search" class="search" placeholder="Cari provinsi..." oninput="renderTable()"><div class="table-wrap"><table><thead><tr><th>No</th><th>Provinsi</th><th>Median Download (Mbps)</th><th>Kategori</th></tr></thead><tbody id="tbody"></tbody></table></div></div>
+</section>
+
+<section>
+<div class="section-title"><div><h2>Visualisasi</h2><p>Urutan dari kecepatan tertinggi ke terendah</p></div></div>
+<div class="panel" id="bars"></div>
+</section>
+
+<section id="analisis">
+<div class="section-title"><div><h2>Analisis Statistik</h2><p>Perhitungan otomatis dari 34 observasi</p></div></div>
+<div class="panel">
+<div class="stats-grid">
+<div class="stat"><span class="label">Mean</span><strong id="smean"></strong></div>
+<div class="stat"><span class="label">Median</span><strong id="smedian"></strong></div>
+<div class="stat"><span class="label">Modus</span><strong id="smode"></strong></div>
+<div class="stat"><span class="label">Varians populasi</span><strong id="svar"></strong></div>
+<div class="stat"><span class="label">Standar deviasi populasi</span><strong id="ssd"></strong></div>
+<div class="stat"><span class="label">Deviasi rata-rata</span><strong id="sdev"></strong></div>
+<div class="stat"><span class="label">Q3</span><strong id="sq3"></strong></div>
+<div class="stat"><span class="label">D9</span><strong id="sd9"></strong></div>
+<div class="stat"><span class="label">P17</span><strong id="sp17"></strong></div>
+</div>
+<p class="note" style="margin-top:14px">Catatan: varians dan standar deviasi di sini memakai rumus populasi (dibagi n). Persentil menggunakan interpolasi linear pada data yang telah diurutkan.</p>
+</div>
+</section>
+
+<section>
+<div class="section-title"><div><h2>Distribusi Frekuensi</h2><p>Interval 5 Mbps untuk memudahkan penyajian data berkelompok</p></div></div>
+<div class="panel"><div class="table-wrap"><table><thead><tr><th>Interval Mbps</th><th>Frekuensi</th><th>Persentase</th></tr></thead><tbody id="freq"></tbody></table></div></div>
+</section>
+
+<section>
+<div class="section-title"><div><h2>Kesimpulan</h2></div></div>
+<div class="panel"><div class="source" id="conclusion"></div></div>
+</section>
+
+<section id="sumber">
+<div class="section-title"><div><h2>Sumber & Metodologi</h2><p>Transparansi data untuk tugas</p></div></div>
+<div class="panel">
+<div class="source">
+<b>Sumber data utama yang dilaporkan:</b> Ookla / Speedtest Intelligence, semester I 2025. Dataset 34 provinsi beserta nilainya dimuat oleh Dataloka pada artikel “15 Kota dengan Kecepatan Download Tertinggi di Indonesia 2025”, dengan keterangan sumber Ookla.<br><br>
+<b>Rujukan pemerintah:</b> Satu Data Komdigi juga menyediakan dataset resmi kecepatan internet Mobile Broadband 2025 dan menyebut variabelnya mencakup waktu, latensi, dan throughput. <a href="https://data.go.id/dataset/dataset/kecepatan-internet-jaringan-pitalebar-bergerak-mobile-broadband" target="_blank">Buka dataset Satu Data</a>.<br><br>
+<b>Catatan akademik:</b> Karena nilai 34 provinsi yang dipakai pada dashboard ini dikutip dari publikasi sekunder yang menyatakan sumbernya Ookla, tuliskan sumber tersebut secara eksplisit pada laporan/PPT jika dosen meminta sitasi.
+</div>
+</div>
+</section>
+
+<footer>NetStat Indonesia • Dashboard Statistik • Dibuat untuk kebutuhan tugas perkuliahan.</footer>
+</main>
+
+<script>
+const data=[
+["Aceh",22.83],["Bali",33.64],["Bangka Belitung",26.41],["Banten",33.48],["Bengkulu",22.48],
+["DI Yogyakarta",22.52],["DKI Jakarta",41.42],["Jambi",24.61],["Jawa Barat",29.58],["Jawa Tengah",24.24],
+["Jawa Timur",25.18],["Kalimantan Barat",24.42],["Kalimantan Selatan",28.18],["Kalimantan Tengah",27.25],
+["Kalimantan Timur",31.83],["Kalimantan Utara",29.64],["Kepulauan Riau",32.64],["Lampung",23.11],
+["Maluku",21.16],["Maluku Utara",21.11],["Nusa Tenggara Barat",24.16],["Nusa Tenggara Timur",22.11],
+["Papua",24.23],["Papua Barat",24.42],["Riau",29.64],["Sulawesi Barat",23.21],["Sulawesi Selatan",27.81],
+["Sulawesi Tengah",23.83],["Sulawesi Tenggara",23.09],["Sulawesi Utara",29.13],["Sumatera Barat",27.64],
+["Sumatera Selatan",26.64],["Sumatera Utara",25.81],["Gorontalo",23.42]
+];
+const vals=data.map(x=>x[1]), sorted=[...vals].sort((a,b)=>a-b), n=vals.length;
+const mean=vals.reduce((a,b)=>a+b,0)/n;
+function percentile(p){let pos=(p/100)*(n-1),lo=Math.floor(pos),hi=Math.ceil(pos);return lo===hi?sorted[lo]:sorted[lo]+(sorted[hi]-sorted[lo])*(pos-lo)}
+const med=percentile(50), q3=percentile(75), d9=percentile(90), p17=percentile(17);
+const variance=vals.reduce((s,x)=>s+(x-mean)**2,0)/n;
+const sd=Math.sqrt(variance), mad=vals.reduce((s,x)=>s+Math.abs(x-mean),0)/n;
+const freqMap={}; vals.forEach(x=>freqMap[x]=(freqMap[x]||0)+1); const maxF=Math.max(...Object.values(freqMap));
+const modes=Object.entries(freqMap).filter(([k,v])=>v===maxF).map(([k])=>k);
+const fmt=x=>Number(x).toFixed(2).replace(".",",");
+const category=x=>x>=30?"Tinggi":x>=25?"Menengah":"Rendah";
+document.getElementById("n").textContent=n;
+document.getElementById("mean").textContent=fmt(mean);
+document.getElementById("median").textContent=fmt(med);
+document.getElementById("range").textContent=fmt(Math.max(...vals)-Math.min(...vals));
+document.getElementById("smean").textContent=fmt(mean)+" Mbps";
+document.getElementById("smedian").textContent=fmt(med)+" Mbps";
+document.getElementById("smode").textContent=modes.length?modes.map(x=>fmt(x)).join(", ")+" Mbps":"Tidak ada";
+document.getElementById("svar").textContent=fmt(variance)+" Mbps²";
+document.getElementById("ssd").textContent=fmt(sd)+" Mbps";
+document.getElementById("sdev").textContent=fmt(mad)+" Mbps";
+document.getElementById("sq3").textContent=fmt(q3)+" Mbps";
+document.getElementById("sd9").textContent=fmt(d9)+" Mbps";
+document.getElementById("sp17").textContent=fmt(p17)+" Mbps";
+
+function renderTable(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const rows=data.filter(x=>x[0].toLowerCase().includes(q)).sort((a,b)=>a[0].localeCompare(b[0],"id"));
+ document.getElementById("tbody").innerHTML=rows.map((x,i)=>`<tr><td>${i+1}</td><td>${x[0]}</td><td class="num">${fmt(x[1])}</td><td>${category(x[1])}</td></tr>`).join("");
+}
+renderTable();
+
+const ranked=[...data].sort((a,b)=>b[1]-a[1]), max=Math.max(...vals);
+document.getElementById("top5").innerHTML=ranked.slice(0,5).map((x,i)=>`<div class="bar-row"><div class="bar-label">${i+1}. ${x[0]}</div><div class="bar-track"><div class="bar-fill" style="width:${x[1]/max*100}%"></div></div><div class="bar-value">${fmt(x[1])} Mbps</div></div>`).join("");
+document.getElementById("bars").innerHTML=ranked.map(x=>`<div class="bar-row"><div class="bar-label">${x[0]}</div><div class="bar-track"><div class="bar-fill" style="width:${x[1]/max*100}%"></div></div><div class="bar-value">${fmt(x[1])}</div></div>`).join("");
+
+const min=Math.floor(Math.min(...vals)/5)*5, maxInt=Math.ceil(Math.max(...vals)/5)*5;
+let freqHTML="";
+for(let a=min;a<maxInt;a+=5){let b=a+4.99, f=vals.filter(x=>x>=a&&x<=b).length;freqHTML+=`<tr><td>${a}–${a+5}</td><td class="num">${f}</td><td class="num">${fmt(f/n*100)}%</td></tr>`}
+document.getElementById("freq").innerHTML=freqHTML;
+const highest=ranked[0], lowest=ranked[ranked.length-1];
+document.getElementById("conclusion").innerHTML=`Dari ${n} provinsi, rata-rata median kecepatan download internet seluler adalah <b>${fmt(mean)} Mbps</b> dan median keseluruhan adalah <b>${fmt(med)} Mbps</b>. Provinsi dengan nilai tertinggi pada dataset adalah <b>${highest[0]} (${fmt(highest[1])} Mbps)</b>, sedangkan yang terendah adalah <b>${lowest[0]} (${fmt(lowest[1])} Mbps)</b>. Standar deviasi populasi sebesar <b>${fmt(sd)} Mbps</b> menunjukkan adanya variasi kecepatan antarprovinsi.`;
+
+function downloadCSV(){
+ let csv="No,Provinsi,Median Download (Mbps)\\n";
+ data.forEach((x,i)=>csv+=`${i+1},"${x[0]}",${x[1]}\\n`);
+ const blob=new Blob([csv],{type:"text/csv;charset=utf-8;"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="dataset-kecepatan-internet-indonesia-2025.csv";a.click();URL.revokeObjectURL(a.href);
+}
+</script>
+</body>
+</html>
